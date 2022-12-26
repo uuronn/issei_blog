@@ -1,6 +1,18 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import Layout from '../layouts/Layout.astro'
+import Card from '../components/Card.astro'
+import { BlogResponse, client, getBlog, getBlogs } from '../library/microcms'
+
+// const response = await getBlogs()
+
+// console.log('test', response)
+console.log(import.meta.env.MICROCMS_SERVICE_DOMAIN)
+const res = await getBlogs({ limit: 1000 })
+
+const resItem = await getBlog('zqo85al-cs4')
+
+console.log('res: ', res)
+console.log('resItem: ', resItem)
 ---
 
 <Layout title="Welcome to Astro.">
@@ -8,16 +20,8 @@ import Card from "../components/Card.astro";
     <h1>いっせいblog</h1>
     <ul role="list" class="link-card-grid">
       <Card href="/blog/ssg" title="SSGについて" body="bodyさんだよｙ" />
-      <Card
-        href="/blog/astro"
-        title="Astroについて"
-        body="難点だ何点だ何店だ"
-      />
-      <Card
-        href="/blog/ssr"
-        title="SSRについて"
-        body="SSRのSSRのレンダリング"
-      />
+      <Card href="/blog/astro" title="Astroについて" body="難点だ何点だ何店だ" />
+      <Card href="/blog/ssr" title="SSRについて" body="SSRのSSRのレンダリング" />
       <Card href="/blog/isr" title="ISRについて" body="何じゃこれ" />
     </ul>
   </main>

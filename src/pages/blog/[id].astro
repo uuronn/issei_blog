@@ -1,18 +1,23 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from '../../layouts/Layout.astro'
 
 export function getStaticPaths() {
   return [
-    { params: { id: "ssg" } },
-    { params: { id: "astro" } },
-    { params: { id: "ssr" } },
-    { params: { id: "isr" } },
-  ];
+    { params: { id: 'ssg' } },
+    { params: { id: 'astro' } },
+    { params: { id: 'ssr' } },
+    { params: { id: 'isr' } }
+  ]
 }
 
-const { id } = Astro.params;
+const { id } = Astro.params
 
-if (!id) return;
+if (!id) return
 ---
 
-<Layout title="記事一覧"><div>success!!: {id}</div></Layout>
+<Layout title="記事一覧">
+  <main>
+    <h1>success!!: {id}</h1>
+    <p>投稿日</p>
+  </main>
+</Layout>
