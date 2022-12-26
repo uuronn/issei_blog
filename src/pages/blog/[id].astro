@@ -1,0 +1,18 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { id: "ssg" } },
+    { params: { id: "astro" } },
+    { params: { id: "ssr" } },
+    { params: { id: "isr" } },
+  ];
+}
+
+const { id } = Astro.params;
+
+if (!id) return;
+---
+
+<Layout title="記事一覧"><div>success!!: {id}</div></Layout>
