@@ -4,9 +4,7 @@ import Card from '../components/Card.astro'
 import { getBlogs } from '../library/microcms'
 import { formatStringDateAndTime } from '../utils/formatStringData'
 
-const res = await getBlogs({ limit: 10 })
-
-if (!res) throw new Error('not res')
+const res = await getBlogs({ limit: 100 })
 ---
 
 <Layout title="Welcome to Astro.">

@@ -8,7 +8,7 @@ export const formatStringDate = (date: Date) => {
   return `${year}年${month}月${day}日`
 }
 
-export const formatStringDateAndTime = (date: string) => {
+export const formatStringDateAndTime = (date: Date) => {
   if (!date) throw new Error('date is not defined')
   const newDate = new Date(date)
   const year = newDate.getFullYear()

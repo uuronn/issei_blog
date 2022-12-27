@@ -7,7 +7,7 @@ export const client = createClient({
 
 export type Blog = {
   id: string
-  createdAt: string
+  createdAt: Date
   updatedAt: string
   publishedAt: string
   revisedAt: string
@@ -24,16 +24,12 @@ export type BlogResponse = {
 }
 
 export const getBlogs = async (queries?: MicroCMSQueries) => {
-  try {
-    return await client.get<BlogResponse>({ endpoint: 'blogs', queries })
-  } catch (error) {
-    console.log('errorだよ', error)
-  }
+  return await client.get<BlogResponse>({ endpoint: 'blogs', queries })
 }
 
 export const getBlog = async (contentId: string, queries?: MicroCMSQueries) => {
   return await client.getListDetail<Blog>({
-    endpoint: 'crud',
+    endpoint: 'blogs',
     contentId,
     queries
   })
