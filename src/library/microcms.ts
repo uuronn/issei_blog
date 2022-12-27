@@ -25,7 +25,7 @@ export type BlogResponse = {
 
 export const getBlogs = async (queries?: MicroCMSQueries) => {
   try {
-    return await client.get<BlogResponse>({ endpoint: 'crud', queries })
+    return await client.get<BlogResponse>({ endpoint: 'blogs', queries })
   } catch (error) {
     console.log('errorだよ', error)
   }

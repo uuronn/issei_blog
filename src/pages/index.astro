@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
 import { getBlogs } from '../library/microcms'
+import { formatStringDateAndTime } from '../utils/formatStringData'
 
 const res = await getBlogs({ limit: 10 })
 
@@ -14,13 +15,14 @@ if (!res) throw new Error('not res')
     <ul role="list" class="link-card-grid">
       {
         res.contents.map((content) => (
-          <Card href={`/blog/${content.id}`} title={content.title} body={content.body} />
+          <Card
+            href={`/blog/${content.id}`}
+            title={content.title}
+            content={content.content}
+            createdAt={formatStringDateAndTime(content.createdAt)}
+          />
         ))
       }
-      <!-- <Card href={`/blog/${r}`} title="SSGについて" body="bodyさんだよｙ" />
-      <Card href="/blog/astro" title="Astroについて" body="難点だ何点だ何店だ" />
-      <Card href="/blog/ssr" title="SSRについて" body="SSRのSSRのレンダリング" />
-      <Card href="/blog/isr" title="ISRについて" body="何じゃこれ" /> -->
     </ul>
   </main>
 </Layout>
