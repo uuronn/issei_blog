@@ -3,22 +3,24 @@ import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
 import { getBlogs } from '../library/microcms'
 
-console.log(import.meta.env.MICROCMS_SERVICE_DOMAIN)
 const res = await getBlogs({ limit: 10 })
 
 if (!res) throw new Error('not res')
-
-console.log('res: ', res.contents)
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
     <h1>いっせいblog</h1>
     <ul role="list" class="link-card-grid">
-      <Card href="/blog/ssg" title="SSGについて" body="bodyさんだよｙ" />
+      {
+        res.contents.map((content) => (
+          <Card href={`/blog/${content.id}`} title={content.title} body={content.body} />
+        ))
+      }
+      <!-- <Card href={`/blog/${r}`} title="SSGについて" body="bodyさんだよｙ" />
       <Card href="/blog/astro" title="Astroについて" body="難点だ何点だ何店だ" />
       <Card href="/blog/ssr" title="SSRについて" body="SSRのSSRのレンダリング" />
-      <Card href="/blog/isr" title="ISRについて" body="何じゃこれ" />
+      <Card href="/blog/isr" title="ISRについて" body="何じゃこれ" /> -->
     </ul>
   </main>
 </Layout>

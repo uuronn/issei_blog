@@ -1,13 +1,19 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import { getBlogs } from '../../library/microcms'
 
-export function getStaticPaths() {
-  return [
-    { params: { id: 'ssg' } },
-    { params: { id: 'astro' } },
-    { params: { id: 'ssr' } },
-    { params: { id: 'isr' } }
-  ]
+export async function getStaticPaths() {
+  const res = await getBlogs({ limit: 10 })
+
+  if (!res) throw new Error('not res')
+
+  const id = res.contents.map((content) => {
+    return {
+      params: { id: content.id }
+    }
+  })
+
+  return id
 }
 
 const { id } = Astro.params

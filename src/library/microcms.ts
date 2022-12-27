@@ -13,6 +13,7 @@ export type Blog = {
   revisedAt: string
   title: string
   content: string
+  body: string
 }
 
 export type BlogResponse = {
