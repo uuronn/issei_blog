@@ -15,7 +15,7 @@ const { href, title, content, createdAt } = Astro.props
       {title}
       <span>&rarr;</span>
     </h2>
-    <p>{content}</p>
+    <p set:html={content} />
     <p>
       {createdAt}
     </p>
