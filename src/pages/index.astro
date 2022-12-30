@@ -1,41 +1,70 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
-import { getBlogs } from '../library/microcms'
 import { formatStringDateAndTime } from '../utils/formatStringData'
+import { fetchTechBlogList } from '../library/fetchTechBlog'
+import { fetchDailyLifeBlogList } from '../library/fetchDailyLifeBlog'
 
-const res = await getBlogs({ limit: 100 })
+const techBlogList = await fetchTechBlogList({ limit: 100 })
+const dailyLifeBlogList = await fetchDailyLifeBlogList({ limit: 100 })
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
     <h1>いっせいblog</h1>
-    <ul role="list" class="link-card-grid">
-      {
-        res.contents.map((content) => (
-          <Card
-            href={`/blog/${content.id}`}
-            title={content.title}
-            content={content.content}
-            createdAt={formatStringDateAndTime(content.createdAt)}
-          />
-        ))
-      }
-    </ul>
+    <div class="container">
+      <div>
+        <p class="head">技術</p>
+        <ul role="list" class="link-card-grid">
+          {
+            techBlogList.contents.map((content) => (
+              <Card
+                href={`/blog/${content.id}`}
+                title={content.title}
+                content={content.content}
+                createdAt={formatStringDateAndTime(content.createdAt)}
+              />
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <p class="head">日常</p>
+        <ul role="list" class="link-card-grid">
+          {
+            dailyLifeBlogList.contents.map((content) => (
+              <Card
+                href={`/blog/${content.id}`}
+                title={content.title}
+                content={content.content}
+                createdAt={formatStringDateAndTime(content.createdAt)}
+              />
+            ))
+          }
+        </ul>
+      </div>
+    </div>
   </main>
 </Layout>
 
 <style>
   main {
-    margin: auto;
-    padding: 1.5rem;
-    max-width: 60ch;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
   }
 
   h1 {
     font-size: 3rem;
     font-weight: 800;
     margin: 0;
+    text-align: center;
+  }
+
+  .head {
     text-align: center;
   }
 

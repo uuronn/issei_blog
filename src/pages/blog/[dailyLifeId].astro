@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { fetchDailyLifeBlog, fetchDailyLifeBlogList } from '../../library/fetchDailyLifeBlog'
+import { formatStringDateAndTime } from '../../utils/formatStringData'
+
+export async function getStaticPaths({}) {
+  const res = await fetchDailyLifeBlogList({ limit: 100 })
+
+  return res.contents.map((content) => {
+    return {
+      params: { dailyLifeId: content.id }
+    }
+  })
+}
+
+const { dailyLifeId } = Astro.params
+
+if (!dailyLifeId) return
+
+const dailyLifeBlog = await fetchDailyLifeBlog(dailyLifeId)
+---
+
+<Layout title="記事一覧">
+  <main>
+    <h1 class="title">{dailyLifeBlog.title}</h1>
+    <hr />
+    <p class="date">
+      投稿日 {formatStringDateAndTime(dailyLifeBlog.createdAt)}
+    </p>
+    <div class="content" set:html={dailyLifeBlog.content} />
+  </main>
+</Layout>
+
+<style>
+  .title {
+    padding: 24px;
+  }
+
+  .date {
+    text-align: right;
+  }
+
+  .content {
+    padding: 0 32px;
+  }
+</style>
