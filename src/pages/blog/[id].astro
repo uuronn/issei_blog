@@ -27,7 +27,7 @@ const blog = await getBlog(id)
     <p class="date">
       投稿日 {formatStringDateAndTime(blog.createdAt)}
     </p>
-    <div>{blog.content}</div>
+    <div class="content" set:html={blog.content} />
   </main>
 </Layout>
 
@@ -38,5 +38,9 @@ const blog = await getBlog(id)
 
   .date {
     text-align: right;
+  }
+
+  .content {
+    padding: 0 32px;
   }
 </style>
