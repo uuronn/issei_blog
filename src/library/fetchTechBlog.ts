@@ -1,33 +1,13 @@
-import { createClient, MicroCMSQueries } from 'microcms-js-sdk'
-
-const client = createClient({
-  serviceDomain: import.meta.env.MICROCMS_SERVICE_DOMAIN,
-  apiKey: import.meta.env.MICROCMS_API_KEY
-})
-
-type TechBlog = {
-  id: string
-  createdAt: Date
-  updatedAt: string
-  publishedAt: string
-  revisedAt: string
-  title: string
-  content: string
-}
-
-type TechBlogResponse = {
-  totalCount: number
-  offset: number
-  limit: number
-  contents: TechBlog[]
-}
+import type { MicroCMSQueries } from 'microcms-js-sdk'
+import { microcmsSDK } from '../infra'
+import type { Blog, BlogResponse } from '../types'
 
 export const fetchTechBlogList = async (queries?: MicroCMSQueries) => {
-  return await client.get<TechBlogResponse>({ endpoint: 'tech-blog', queries })
+  return await microcmsSDK.get<BlogResponse>({ endpoint: 'tech-blog', queries })
 }
 
 export const fetchTechBlog = async (contentId: string, queries?: MicroCMSQueries) => {
-  return await client.getListDetail<TechBlog>({
+  return await microcmsSDK.getListDetail<Blog>({
     endpoint: 'tech-blog',
     contentId,
     queries
