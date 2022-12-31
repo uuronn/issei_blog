@@ -1,5 +1,5 @@
 import type { MicroCMSQueries } from 'microcms-js-sdk'
-import { microcmsSDK } from '../infra'
+import { microcmsSDK } from '~/infra'
 import type { Blog, BlogResponse } from '../types'
 
 export const fetchDailyLifeBlogList = async (queries?: MicroCMSQueries) => {

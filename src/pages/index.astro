@@ -1,11 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import Card from '../components/Card.astro'
-import { formatStringDateAndTime } from '../utils/formatStringData'
-import { fetchTechBlogList } from '../library/fetchTechBlog'
-import { fetchDailyLifeBlogList } from '../library/fetchDailyLifeBlog'
-import FlexContainer from '../layouts/FlexContainer.astro'
-import Header from '../components/Header.astro'
+import Layout from '~/layouts/Layout.astro'
+import Card from '~/components/Card.astro'
+import { formatStringDateAndTime } from '~/utils/formatStringData'
+import { fetchTechBlogList } from '~/library/fetchTechBlog'
+import { fetchDailyLifeBlogList } from '~/library/fetchDailyLifeBlog'
+import FlexContainer from '~/layouts/FlexContainer.astro'
+import Header from '~/components/Header.astro'
 
 const techBlogList = await fetchTechBlogList()
 const dailyLifeBlogList = await fetchDailyLifeBlogList()

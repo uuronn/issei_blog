@@ -1,8 +1,8 @@
 ---
-import Header from '../../components/Header.astro'
-import Layout from '../../layouts/Layout.astro'
-import { fetchTechBlog, fetchTechBlogList } from '../../library/fetchTechBlog'
-import { formatStringDateAndTime } from '../../utils/formatStringData'
+import Header from '~/components/Header.astro'
+import Layout from '~/layouts/Layout.astro'
+import { fetchTechBlog, fetchTechBlogList } from '~/library/fetchTechBlog'
+import { formatStringDateAndTime } from '~/utils/formatStringData'
 
 export async function getStaticPaths({}) {
   const res = await fetchTechBlogList()
