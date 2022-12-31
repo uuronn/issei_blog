@@ -1,0 +1,56 @@
+---
+import type { breadcrumb } from '../types'
+
+interface Props {
+  breadcrumbList: breadcrumb[]
+}
+
+const { breadcrumbList }: Props = Astro.props
+---
+
+<header>
+  <ul>
+    {
+      breadcrumbList.map((breadcrumb) => (
+        <li>
+          <a href={breadcrumb.path}>{breadcrumb.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</header>
+
+<style>
+  header {
+    width: 100vw;
+    padding: 24px;
+    background: #fff;
+    border-bottom: solid 2px #000;
+    position: fixed;
+    z-index: 100;
+  }
+
+  ul {
+    display: flex;
+  }
+
+  li {
+    font-size: 1.6rem;
+  }
+
+  li:last-child:after {
+    display: none;
+  }
+
+  li:after {
+    content: '>';
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0 8px 0 4px;
+  }
+
+  a {
+    font-size: 20px;
+    font-weight: bold;
+  }
+</style>
