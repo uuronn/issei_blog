@@ -30,7 +30,7 @@ const techBlog = await fetchTechBlog(techId)
   />
   <main>
     <p>
-      投稿日 {formatStringDateAndTime(techBlog.createdAt)}
+      投稿日 {formatStringDateAndTime(techBlog.publishedAt)}
     </p>
     <div class="content" set:html={techBlog.content} />
   </main>

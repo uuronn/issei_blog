@@ -1,9 +1,9 @@
 export type Blog = {
   id: string
   createdAt: Date
-  updatedAt: string
-  publishedAt: string
-  revisedAt: string
+  updatedAt: Date
+  publishedAt: Date
+  revisedAt: Date
   title: string
   content: string
 }

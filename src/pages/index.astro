@@ -25,7 +25,7 @@ const dailyLifeBlogList = await fetchDailyLifeBlogList()
                 href={`/blog/${content.id}`}
                 title={content.title}
                 content={content.content}
-                createdAt={formatStringDateAndTime(content.createdAt)}
+                createdAt={formatStringDateAndTime(content.publishedAt)}
               />
             ))
           }
@@ -41,7 +41,7 @@ const dailyLifeBlogList = await fetchDailyLifeBlogList()
                 href={`/blog/${content.id}`}
                 title={content.title}
                 content={content.content}
-                createdAt={formatStringDateAndTime(content.createdAt)}
+                createdAt={formatStringDateAndTime(content.publishedAt)}
               />
             ))
           }

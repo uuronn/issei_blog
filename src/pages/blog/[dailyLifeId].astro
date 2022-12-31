@@ -30,7 +30,7 @@ const dailyLifeBlog = await fetchDailyLifeBlog(dailyLifeId)
   />
   <main>
     <p>
-      投稿日 {formatStringDateAndTime(dailyLifeBlog.createdAt)}
+      投稿日 {formatStringDateAndTime(dailyLifeBlog.publishedAt)}
     </p>
     <div class="content" set:html={dailyLifeBlog.content} />
   </main>
