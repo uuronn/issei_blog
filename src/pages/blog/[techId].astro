@@ -5,7 +5,7 @@ import { fetchTechBlog, fetchTechBlogList } from '../../library/fetchTechBlog'
 import { formatStringDateAndTime } from '../../utils/formatStringData'
 
 export async function getStaticPaths({}) {
-  const res = await fetchTechBlogList({ limit: 100 })
+  const res = await fetchTechBlogList()
 
   return res.contents.map((content) => {
     return {

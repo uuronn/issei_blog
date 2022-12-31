@@ -7,8 +7,8 @@ import { fetchDailyLifeBlogList } from '../library/fetchDailyLifeBlog'
 import FlexContainer from '../layouts/FlexContainer.astro'
 import Header from '../components/Header.astro'
 
-const techBlogList = await fetchTechBlogList({ limit: 100 })
-const dailyLifeBlogList = await fetchDailyLifeBlogList({ limit: 100 })
+const techBlogList = await fetchTechBlogList()
+const dailyLifeBlogList = await fetchDailyLifeBlogList()
 ---
 
 <Layout title="いっせいブログ">

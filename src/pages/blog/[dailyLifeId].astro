@@ -5,7 +5,7 @@ import { fetchDailyLifeBlog, fetchDailyLifeBlogList } from '../../library/fetchD
 import { formatStringDateAndTime } from '../../utils/formatStringData'
 
 export async function getStaticPaths({}) {
-  const res = await fetchDailyLifeBlogList({ limit: 100 })
+  const res = await fetchDailyLifeBlogList()
 
   return res.contents.map((content) => {
     return {
