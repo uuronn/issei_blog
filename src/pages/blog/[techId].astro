@@ -1,4 +1,5 @@
 ---
+import Header from '../../components/Header.astro'
 import Layout from '../../layouts/Layout.astro'
 import { fetchTechBlog, fetchTechBlogList } from '../../library/fetchTechBlog'
 import { formatStringDateAndTime } from '../../utils/formatStringData'
@@ -21,10 +22,14 @@ const techBlog = await fetchTechBlog(techId)
 ---
 
 <Layout title="記事一覧">
+  <Header
+    breadcrumbList={[
+      { path: '/', title: 'ブログ一覧' },
+      { path: `/blog/${techBlog.id}`, title: `${techBlog.title}` }
+    ]}
+  />
   <main>
-    <h1 class="title">{techBlog.title}</h1>
-    <hr />
-    <p class="date">
+    <p>
       投稿日 {formatStringDateAndTime(techBlog.createdAt)}
     </p>
     <div class="content" set:html={techBlog.content} />
@@ -32,15 +37,11 @@ const techBlog = await fetchTechBlog(techId)
 </Layout>
 
 <style>
-  .title {
-    padding: 24px;
+  main {
+    padding: 100px 64px 0;
   }
 
-  .date {
+  p {
     text-align: right;
-  }
-
-  .content {
-    padding: 0 32px;
   }
 </style>

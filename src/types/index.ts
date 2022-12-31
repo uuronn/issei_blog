@@ -14,3 +14,8 @@ export type BlogResponse = {
   limit: number
   contents: Blog[]
 }
+
+export type breadcrumb = {
+  title: string
+  path: string
+}

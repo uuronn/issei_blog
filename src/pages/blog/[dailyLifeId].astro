@@ -1,4 +1,5 @@
 ---
+import Header from '../../components/Header.astro'
 import Layout from '../../layouts/Layout.astro'
 import { fetchDailyLifeBlog, fetchDailyLifeBlogList } from '../../library/fetchDailyLifeBlog'
 import { formatStringDateAndTime } from '../../utils/formatStringData'
@@ -21,10 +22,14 @@ const dailyLifeBlog = await fetchDailyLifeBlog(dailyLifeId)
 ---
 
 <Layout title="記事一覧">
+  <Header
+    breadcrumbList={[
+      { path: '/', title: 'ブログ一覧' },
+      { path: `/blog/${dailyLifeBlog.id}`, title: `${dailyLifeBlog.title}` }
+    ]}
+  />
   <main>
-    <h1 class="title">{dailyLifeBlog.title}</h1>
-    <hr />
-    <p class="date">
+    <p>
       投稿日 {formatStringDateAndTime(dailyLifeBlog.createdAt)}
     </p>
     <div class="content" set:html={dailyLifeBlog.content} />
@@ -32,15 +37,11 @@ const dailyLifeBlog = await fetchDailyLifeBlog(dailyLifeId)
 </Layout>
 
 <style>
-  .title {
-    padding: 24px;
+  main {
+    padding: 100px 64px 0;
   }
 
-  .date {
+  p {
     text-align: right;
-  }
-
-  .content {
-    padding: 0 32px;
   }
 </style>
