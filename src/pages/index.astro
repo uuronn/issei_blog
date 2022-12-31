@@ -11,12 +11,13 @@ const techBlogList = await fetchTechBlogList({ limit: 100 })
 const dailyLifeBlogList = await fetchDailyLifeBlogList({ limit: 100 })
 ---
 
-<Layout title="ブログ">
+<Layout title="いっせいブログ">
   <Header breadcrumbList={[{ path: '/', title: 'ブログ一覧' }]} />
   <main>
     <FlexContainer justifyContent="center" gap="30px">
       <div>
         <h2 class="head">技術</h2>
+        <p>{techBlogList.contents.length}件</p>
         <ul role="list" class="link-card-grid">
           {
             techBlogList.contents.map((content) => (
@@ -32,6 +33,7 @@ const dailyLifeBlogList = await fetchDailyLifeBlogList({ limit: 100 })
       </div>
       <div>
         <h2 class="head">日常</h2>
+        <p>{dailyLifeBlogList.contents.length}件</p>
         <ul role="list" class="link-card-grid">
           {
             dailyLifeBlogList.contents.map((content) => (
@@ -52,6 +54,11 @@ const dailyLifeBlogList = await fetchDailyLifeBlogList({ limit: 100 })
 <style>
   main {
     padding-top: 100px;
+  }
+
+  p {
+    font-size: 20px;
+    text-align: right;
   }
 
   h1 {
