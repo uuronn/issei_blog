@@ -115,6 +115,10 @@ input {
   border-radius: 0;
 }
 
+ul {
+  list-style: none;
+}
+
 /* Replace pointer cursor in disabled elements */
 [disabled] {
   cursor: default;
