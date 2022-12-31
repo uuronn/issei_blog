@@ -4,6 +4,7 @@ import Card from '../components/Card.astro'
 import { formatStringDateAndTime } from '../utils/formatStringData'
 import { fetchTechBlogList } from '../library/fetchTechBlog'
 import { fetchDailyLifeBlogList } from '../library/fetchDailyLifeBlog'
+import FlexContainer from '../components/FlexContainer.astro'
 
 const techBlogList = await fetchTechBlogList({ limit: 100 })
 const dailyLifeBlogList = await fetchDailyLifeBlogList({ limit: 100 })
@@ -12,7 +13,7 @@ const dailyLifeBlogList = await fetchDailyLifeBlogList({ limit: 100 })
 <Layout title="ブログ">
   <main>
     <h1>いっせいblog</h1>
-    <div class="container">
+    <FlexContainer justifyContent="center" gap="30px">
       <div>
         <p class="head">技術</p>
         <ul role="list" class="link-card-grid">
@@ -43,20 +44,11 @@ const dailyLifeBlogList = await fetchDailyLifeBlogList({ limit: 100 })
           }
         </ul>
       </div>
-    </div>
+    </FlexContainer>
   </main>
 </Layout>
 
 <style>
-  main {
-  }
-
-  .container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-  }
-
   h1 {
     font-size: 3rem;
     font-weight: 800;

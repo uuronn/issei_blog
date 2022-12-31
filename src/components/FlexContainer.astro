@@ -1,0 +1,32 @@
+---
+interface Props {
+  flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse'
+  justifyContent?:
+    | 'start'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+    | 'flex-end'
+  alignItems?: 'normal' | 'stretch' | 'center' | 'start' | 'end' | 'flex-start' | 'flex-end'
+  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse'
+  gap?: string
+}
+
+const { flexDirection, justifyContent, alignItems, flexWrap, gap } = Astro.props
+---
+
+<div>
+  <slot />
+</div>
+
+<style define:vars={{ flexDirection, justifyContent, alignItems, flexWrap, gap }}>
+  div {
+    display: flex;
+    flex-direction: var(--flexDirection);
+    justify-content: var(--justifyContent);
+    align-items: var(--alignItems);
+    flex-wrap: var(--flexWrap);
+    gap: var(--gap);
+  }
+</style>
