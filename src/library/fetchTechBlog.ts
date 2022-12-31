@@ -1,6 +1,6 @@
 import type { MicroCMSQueries } from 'microcms-js-sdk'
-import { microcmsSDK } from '../infra'
-import type { Blog, BlogResponse } from '../types'
+import { microcmsSDK } from '~/infra'
+import type { Blog, BlogResponse } from '~/types'
 
 export const fetchTechBlogList = async (queries?: MicroCMSQueries) => {
   return await microcmsSDK.get<BlogResponse>({ endpoint: 'tech-blog', queries })
